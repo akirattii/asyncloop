@@ -1,7 +1,7 @@
 /*
- * Usage of asyncloop:
+ * Usage of mildloop:
  */
-const asyncloop = require("../lib");
+const mildloop = require("../lib");
 
 
 //
@@ -27,13 +27,13 @@ function asyncfn(s, cb) {
 // sets `suspend:true`. It means async loop is suspended if any error occurred.
 //
 
-// asyncloop options:
+// mildloop options:
 var options = {
   suspend: true, // suspend if any error occurred. Defaults to false.
 }
 
-// Let's use asyncloop!
-asyncloop({ params, fn: asyncfn, options }, (errors, results, status) => {
+// Let's use mildloop!
+mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
   console.log("status:", status);
   console.log("errors:", errors);
   console.log("results:", results);

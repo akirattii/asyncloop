@@ -1,7 +1,8 @@
 {
-  "name": "asyncloop",
+  "name": "mildloop",
   "version": "1.0.0",
   "description": "A simple helper library for async function's loop execution.",
+  "private": false,
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +12,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/akirattii/asyncloop.git"
+    "url": "http://github.com/akirattii/mildloop.git"
   }
 }
