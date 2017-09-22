@@ -1,0 +1,16 @@
+{
+  "name": "asyncloop",
+  "version": "1.0.0",
+  "description": "A simple helper library for async function's loop execution.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": "async",
+  "author": "Akira Tanaka <tanaka.akira.2006@gmail.com> (https://github.com/akirattii)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/akirattii/asyncloop.git"
+  }
+}
