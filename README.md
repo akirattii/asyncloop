@@ -1,7 +1,7 @@
 # mildloop
 
-A simple helper library for async function's loop execution.  
-You can execute same async function repeatedly, passing each parameter for each execution.
+A simple helper library for async function's loop execution. 
+It allows you to execute your async function logic repeatedly, passing any parameter to every executions of a function.
 
 # Install
 
@@ -19,6 +19,8 @@ var options = {
   suspend: true, // suspend if any error occurred. Defaults to false.
 }
 
+var params = [...]; // Array of param which is pass to each function
+
 // Let's use mildloop!
 mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
   console.log("status:", status);
@@ -26,6 +28,14 @@ mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
   console.log("results:", results);
 });
 ```
+
+# Options
+
+| Option | Type | Detail | Default |
+|:-----------|:------------|:------------|:------------|
+| `suspend` | Boolean | If set true, when any error occurred in the middle of loop, breaks execution loop. | `false` |
+| `interval` | Number | Milliseconds of execution interval. Only the first function is executed immediately without any interval. | `0` |
+
 
 # Example
 
@@ -83,5 +93,5 @@ results: [ 'A', 'B', 'C', 'D' ]
 - `results`: Always array object. Each element is a result of each async function.
 - `status`: `"finished"` or `"suspended"`. If you set `option.suspend: true` and any error occurred, `status` is `"suspended"`.
 
-if you need more examples, please check `example/`.
+If you need more examples, please check `example/`.
 
