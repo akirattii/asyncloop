@@ -43,7 +43,7 @@ mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
 const mildloop = require("mildloop");
 
 //
-// -- function & its params. it's up to you:
+// prepare async function & thier param. it's up to you:
 //
 
 // params to be passed to each executing functions:
@@ -61,7 +61,7 @@ function asyncfn(s, cb) {
 
 
 //
-// Ok, loop it:
+// Ok, loop them:
 // sets `suspend:true`. It means async loop is suspended if any error occurred.
 //
 
@@ -71,11 +71,14 @@ var options = {
 }
 
 // Let's use mildloop!
-mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
+const instance = mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
   console.log("status:", status);
   console.log("errors:", errors);
   console.log("results:", results);
 });
+
+// If you want to stop the loop, you can stop it by yourself in the middle:
+// instance.stop(); // returned `status` on the callback will be set as "terminated"
 
 /*
 console log:
@@ -91,7 +94,10 @@ results: [ 'A', 'B', 'C', 'D' ]
 
 - `error`: Errors (array) of each function. If all function returned no error, `errors` is `null` but not array.
 - `results`: Always array object. Each element is a result of each async function.
-- `status`: `"finished"` or `"suspended"`. If you set `option.suspend: true` and any error occurred, `status` is `"suspended"`.
+- `status`: `"finished"`, `"suspended"`, or `"terminated"`. If you set `option.suspend: true` and any error occurred, `status` is `"suspended"`. If you `stop()` the loop by yourself, `"terminated"` is set.
+
+
+
 
 If you need more examples, please check `example/`.
 
