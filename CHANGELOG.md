@@ -1,5 +1,8 @@
 # mildloop changelog
 
+## 1.3.0 - 2017-10-06
+- Add `condition` option
+
 ## 1.2.0 - 2017-10-06
 - Add `stop()` function for loop termination
 

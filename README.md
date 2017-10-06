@@ -35,6 +35,7 @@ mildloop({ params, fn: asyncfn, options }, (errors, results, status) => {
 |:-----------|:------------|:------------|:------------|
 | `suspend` | Boolean | If set true, when any error occurred in the middle of loop, breaks execution loop. | `false` |
 | `interval` | Number | Milliseconds of execution interval. Only the first function is executed immediately without any interval. | `0` |
+| `condition` | Function | A function which returns boolean is used as a condition to exit loop. | `null` |
 
 
 # Example
@@ -92,9 +93,13 @@ results: [ 'A', 'B', 'C', 'D' ]
 
 `mildloop` callback function returns `(errors, results, status)`. 
 
-- `error`: Errors (array) of each function. If all function returned no error, `errors` is `null` but not array.
-- `results`: Always array object. Each element is a result of each async function.
-- `status`: `"finished"`, `"suspended"`, or `"terminated"`. If you set `option.suspend: true` and any error occurred, `status` is `"suspended"`. If you `stop()` the loop by yourself, `"terminated"` is set.
+- **error**: Errors (array) of each function. If all function returned no error, `errors` is `null` but not array.
+- **results**: Always array object. Each element is a result of each async function.
+- **status**: `"finished"`, `"suspended"`, `"terminated"`, or `"condition_matched"`.
+    - If you set `option.suspend: true` and any error occurred, `status` is `"suspended"`.
+    - If you `stop()` the loop by yourself, `"terminated"` is set.
+    - If you set `condition` option and it is matched, the execution loop is suspended and `"condition_matched"` is set. 
+
 
 
 
